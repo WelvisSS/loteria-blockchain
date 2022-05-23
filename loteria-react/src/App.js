@@ -4,6 +4,8 @@ import web3 from "./web3";
 // Informação do contrato
 import loteria from "./loteria";
 
+import "./App.css"
+
 const App = () => {
   // Cria variáveis e funções de alteração
   const [gerente, setGerente] = useState("");
@@ -94,33 +96,35 @@ const App = () => {
     }
   };
   return (
-    <div>
-      <h2>Contrato de Loteria</h2>
-      <p>Este contrato é gerenciado por {gerente}</p>
-      <p>
-        Existem agora {jogadores.length} pessoas apostando para ganhar{" "}
-        {web3.utils.fromWei(saldo, "ether")} ether
-      </p>
-      <br />
-      <form onSubmit={apostar}>
-        <h4>Quanto deseja apostar?</h4>
-        <div>
-          <label>Quantidade de ether para ser enviado: </label>
-          <input
-            value={value}
-            // Altera o valor que está sendo apostado
-            onChange={(event) => setValue(event.target.value)}
-          />
-        </div>
-        <button>Jogar</button>
-      </form>
-      <hr />
-      <h4>Realizar sorteio? </h4>
-      <button onClick={sortear}> Sortear</button>
-      <hr />
-      {/* Mostra mensagem ao usuário */}
-      <h1>{mensagem}</h1>
-      <h2>{ganhador}</h2>
+    <div className="wrapper">
+      <div className="container">
+        <h2>Contrato de Loteria</h2>
+        <p>Este contrato é gerenciado por {gerente}</p>
+        <p>
+          Existem agora {jogadores.length} pessoas apostando para ganhar{" "}
+          {web3.utils.fromWei(saldo, "ether")} ether
+        </p>
+        <br />
+        <form onSubmit={apostar}>
+          <h4>Quanto deseja apostar?</h4>
+          <div>
+            <label>Quantidade de ether para ser enviado: </label>
+            <input
+              value={value}
+              // Altera o valor que está sendo apostado
+              onChange={(event) => setValue(event.target.value)}
+            />
+          </div>
+          <button>Jogar</button>
+        </form>
+        <hr className="line"/>
+        <h4>Realizar sorteio? </h4>
+        <button onClick={sortear}> Sortear</button>
+        <hr className="line"/>
+        {/* Mostra mensagem ao usuário */}
+        <h1>{mensagem}</h1>
+        <h2>{ganhador}</h2>
+      </div>
     </div>
   );
 };
